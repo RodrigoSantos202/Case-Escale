@@ -74,6 +74,7 @@ Após o processamento, a modelagem dimensional ficou na seguinte estrutura
   1.	Qual foi o número de ligações por dia?
   	
       A figura abaixo ilustra o resultado obtido
- 
+      
+ ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/3e6bfcb6e372bc4590ac436b8047cb7b75f262f1/q1.PNG)
  
  
