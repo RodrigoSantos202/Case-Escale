@@ -96,7 +96,36 @@ ORDER BY
 
 ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/c5a89091cd5af71494053128b99b9b7ac116669e/q3a.PNG)
 
+```
+SELECT DM.MIDIA
+      ,COUNT(DISTINCT FC.CALL_ID) AS CALL 
+FROM   DIM_LINE_MKT DM
+LEFT JOIN 
+       FACT_CALL FC
+ON     DM.LINE_ID = FC.LINE_ID         
+WHERE  FC.MODALITY = 'Entrada'
+GROUP BY
+       DM.MIDIA
+```
+
 ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/c5a89091cd5af71494053128b99b9b7ac116669e/q3b.PNG)
+
+
+```
+SELECT 
+        DM.CAMPAIGN
+       ,COUNT(DISTINCT FC.CALL_KEY) AS CALL_ID 
+FROM DIM_LINE_MKT DM
+LEFT JOIN
+        FACT_CALL   FC
+ON      DM.LINE_ID  = FC.LINE_ID    
+WHERE   FC.MODALITY ='Entrada'
+GROUP BY 
+        DM.CAMPAIGN
+ORDER BY 
+        CALL_ID ASC
+LIMIT 20
+```
 
 
 # Outros indicadores
