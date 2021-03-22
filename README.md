@@ -91,6 +91,10 @@ GROUP BY
 ORDER BY 
         DC.DATE
  ```
+ 
+ 3. Qual o número de ligações receptivas por campanha, por status final da ligação e tipo de mídia, sendo todos apresentados em uma mesma visualização?
+
+
 
 
 # Outros indicadores
