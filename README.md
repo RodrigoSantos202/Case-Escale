@@ -99,7 +99,7 @@ ORDER BY
 Achei interessante realizar um indicador onde possa mostrar quais os estados que mais realiza compra, essa informação pode ser relevante para possíveis promoções e mudança de estratégia a fim de alavancar as vendas em estados que menos consome.
 
  ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/16d7f854a57c5e69ae7429a52842ae57804b0ec6/q5.PNG)
- 
+ ```
  SELECT  FC.UF,
         SUM(COALESCE(DA.MONTHLY_AMOUNT, 0)) AS MONTHLY_AMOUNT
 FROM    FACT_CALL FC 
@@ -111,3 +111,4 @@ GROUP BY
         FC.UF
 ORDER BY 
         MONTHLY_AMOUNT ASC   
+```
