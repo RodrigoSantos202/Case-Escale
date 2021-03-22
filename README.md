@@ -67,6 +67,8 @@ telephonyTypeDf = tableReader("telephony_types")
 
 Após o processamento, a modelagem dimensional ficou na seguinte estrutura
 
+![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/98ee1a36e61d98a0de0e695354ae4a890b03762f/dm.PNG)
+
 # Case respostas
  
   1.	Qual foi o número de ligações por dia?
