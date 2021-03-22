@@ -14,7 +14,7 @@ Esse diretorio foi criado a fim de participar do processo seletivo na Escale par
 
 4. ilustracao dos graficos
 
-# Conexao com fonte de dados 
+# Conexão com fonte de dados 
 
 Para conectar a fonte de dados criei a seguinte função.
 ```
