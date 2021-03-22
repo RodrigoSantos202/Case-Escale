@@ -77,4 +77,17 @@ Após o processamento, a modelagem dimensional ficou na seguinte estrutura
       
  ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/3e6bfcb6e372bc4590ac436b8047cb7b75f262f1/q1.PNG)
  
- 
+ ```
+ SELECT  DC.DATE,
+        COUNT(FC.CALL_ID) CALL_QUANTITY
+FROM    DIM_CALENDAR DC
+LEFT JOIN
+        FACT_CALL FC
+ON      FC.CREATED_AT = DC.DATE
+WHERE   DC.YEAR = 2020
+AND     DC.MONTH = 6
+GROUP BY 
+        DC.DATE
+ORDER BY 
+        DC.DATE
+ ```
