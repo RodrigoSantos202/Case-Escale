@@ -17,7 +17,7 @@ Esse diretorio foi criado a fim de participar do processo seletivo na Escale par
 # Conexão com fonte de dados 
 
 Para conectar a fonte de dados criei a seguinte função.
-```
+```Python
 DB_HOST = '****'
 DB_NAME = '****'
 DB_PORT = '****'
@@ -42,7 +42,7 @@ def tableReader(tableName):
   return tempDf
   ```
  # Processo de extração dos dados  
- ```
+ ```python
 attendacesDf = tableReader("attendances")
 attendancesCallsDf = tableReader("attendances_calls")
 lineMKTFinalDf = tableReader("lines_mkt_final")
@@ -73,11 +73,11 @@ Após o processamento, a modelagem dimensional ficou na seguinte estrutura
  
   1.	Qual foi o número de ligações por dia?
   	
-      A figura abaixo ilustra o resultado obtido
+  >    A figura abaixo ilustra o resultado obtido
       
  ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/3e6bfcb6e372bc4590ac436b8047cb7b75f262f1/q1.PNG)
  
- ```
+ ```sql
  SELECT  DC.DATE,
         COUNT(FC.CALL_ID) CALL_QUANTITY
 FROM    DIM_CALENDAR DC
@@ -99,7 +99,7 @@ ORDER BY
 ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/d0a058ebeddd5a58e5c7a1f4835c02b2d98a1580/q2.PNG)
 
 
-```
+```sql
   SELECT  DL.MIDIA,
           SUM(COALESCE(DA.MONTHLY_AMOUNT, 0)) /
           COUNT(DISTINCT CASE WHEN DA.RECORD_TYPE = 'Venda' THEN FC.CALL_ID END) AS MONTHLY_AMOUNT,
@@ -123,7 +123,7 @@ Quantidade de atendimentos por midia!
 
 ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/c5a89091cd5af71494053128b99b9b7ac116669e/q3a.PNG)
 
-```
+```sql
 SELECT DM.MIDIA
       ,COUNT(DISTINCT FC.CALL_ID) AS CALL 
 FROM   DIM_LINE_MKT DM
@@ -141,7 +141,7 @@ Quantidade de ligacoes por campanha!
 ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/c5a89091cd5af71494053128b99b9b7ac116669e/q3b.PNG)
 
 
-```
+```sql
 SELECT 
         DM.CAMPAIGN
        ,COUNT(DISTINCT FC.CALL_KEY) AS CALL_ID 
@@ -158,13 +158,16 @@ LIMIT 20
 ```
 
 
+
+
 # Outros indicadores
 5. Valor de vendas por estado.
 
 Achei interessante realizar um indicador onde possa mostrar quais os estados que mais realiza compra, essa informação pode ser relevante para possíveis promoções e mudança de estratégia a fim de alavancar as vendas em estados que menos consome, com base nos estados de maior sucesso de vendas.
 
  ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/16d7f854a57c5e69ae7429a52842ae57804b0ec6/q5.PNG)
- ```
+ 
+ ```sql
  SELECT  FC.UF,
         SUM(COALESCE(DA.MONTHLY_AMOUNT, 0)) AS MONTHLY_AMOUNT
 FROM    FACT_CALL FC 
