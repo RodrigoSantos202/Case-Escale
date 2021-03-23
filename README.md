@@ -1,25 +1,22 @@
-# Case-Escale
+# Case Escale
+Case Escale por Rodrigo dos Santos Ramos
 
-Case-Escale Rodrigo dos Santos Ramos
-# Resumo
+## Resumo
 
-Esse diretorio foi criado a fim de participar do processo seletivo na Escale para vaga de Data Analyst. 
+Esse diretorio foi criado a fim de participar do processo seletivo na Escale para vaga de Data Analyst.
 
-Link de acesso ao Case link: https://github.com/RodrigoSantos202/Case-Escale/blob/b945316e39bbb79e0d57cce32f16a3dc514f6445/Case-Escale-Rodrigo.ipynb
+O código utilizado no case está disponível no [Jupyter Notebook](https://github.com/RodrigoSantos202/Case-Escale/blob/main/Case-Escale-Rodrigo.ipynb).
 
-# Estrututa
+## Estrututa
 
-1. Conexao com banco de dados 
+1. Conexao com banco de dados;
+2. Extrair Informações da fonte de dados;
+3. Transformação dos dados;
+4. Ilustracao dos graficos;
 
-2. Extrair Informações da fonte de dados
+## Conexão com fonte de dados 
 
-3. transformação dos dados 
-
-4. ilustracao dos graficos
-
-# Conexão com fonte de dados 
-
-Para conectar a fonte de dados criei a seguinte função.
+Para me conectar à fonte de dados criei a seguinte função:
 ```Python
 DB_HOST = '****'
 DB_NAME = '****'
@@ -43,44 +40,45 @@ def tableReader(tableName):
             .option("driver", "org.postgresql.Driver") \
             .load()
   return tempDf
-  ```
- # Processo de extração dos dados  
- ```python
+```
+  
+ ## Processo de extração dos dados  
+ 
+```python
 attendacesDf = tableReader("attendances")
 attendancesCallsDf = tableReader("attendances_calls")
 lineMKTFinalDf = tableReader("lines_mkt_final")
 callHistoryQueueDf = tableReader("call_history_queue")
 telephonyTypeDf = tableReader("telephony_types")
- ```
- # Transformação dos dados - ETL
+```
+
+## Transformação dos dados - ETL
  
- Para o processo de ETL, realizei tratamentos dos dados e criação das tabelas fato e dimensão.
+Para o processo de **ETL**, realizei tratamentos dos dados e criei tabelas fato e dimensões.
  
-# Dimensão
+## Dimensão
 
-•	dim_attendance:  Agrupamento entre as tabelas attendances_calls e Attendances.
+* `dim_attendance`:  Agrupamento entre as tabelas `attendances_calls` e `attendances`.
+* `dim_line_mkt`: Sua origem foi a tabela `lines_mkt_final`, porem nessa nova estrutura, ela passou a conter apenas as colunas que achei importante para realizar os indicadores.
+* `dim_calendar`: Tabela de calendário.
 
-•	dim_line_mkt: Sua origem foi a tabela Lines_mkt_final, porem nessa nova estrutura, ela passou a conter apenas as colunas que achei importante para realizar os indicadores.
+## Fato
 
-•	dim_calendar: Tabela de calendário.
-
-# Fato
-
-•	Tabela fact_call:  Agrupamento entre as tabelas Telephony_types e Calls_history_queue, onde trouxe para dentro do fato, as colunas relevantes. 
+* Tabela `fact_call`:  Agrupamento entre as tabelas `telephony_types` e `calls_history_queue`, onde trouxe para dentro do fato, as colunas relevantes. 
 
 Após o processamento, a modelagem dimensional ficou na seguinte estrutura
 
 ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/98ee1a36e61d98a0de0e695354ae4a890b03762f/dm.PNG)
 
-# Case respostas
+## Perguntas a serem respondidas
+
+1. Qual foi o número de ligações por dia?
+
+> A figura abaixo ilustra o resultado obtido
  
-  1.	Qual foi o número de ligações por dia?
-  	
-  >    A figura abaixo ilustra o resultado obtido
-      
- ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/3e6bfcb6e372bc4590ac436b8047cb7b75f262f1/q1.PNG)
- 
- ```sql
+![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/3e6bfcb6e372bc4590ac436b8047cb7b75f262f1/q1.PNG)
+
+```sql
  SELECT  DC.DATE,
         COUNT(FC.CALL_ID) CALL_QUANTITY
 FROM    DIM_CALENDAR DC
@@ -93,14 +91,13 @@ GROUP BY
         DC.DATE
 ORDER BY 
         DC.DATE
- ```
+```
+
+2. Qual o ticket médio das vendas e das ligações por mídia?
  
- 2. Qual o ticket médio das vendas e das ligações por mídia?
- 
- Para chegar a esse resultado, realizei a soma do valor do valor mensal e contagem distinta das ligações que possui vendas!
+Para chegar a esse resultado, realizei a soma do valor mensal e contagem distinta das ligações que possuem vendas.
  
 ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/d0a058ebeddd5a58e5c7a1f4835c02b2d98a1580/q2.PNG)
-
 
 ```sql
   SELECT  DL.MIDIA,
@@ -118,11 +115,10 @@ ORDER BY
   GROUP BY
           DL.MIDIA
 ```
-
  
- 3. Qual o número de ligações receptivas por campanha, por status final da ligação e tipo de mídia, sendo todos apresentados em uma mesma visualização?
+3. Qual o número de ligações receptivas por campanha, por status final da ligação e tipo de mídia, sendo todos apresentados em uma mesma visualização?
 
-Quantidade de atendimentos por midia!
+Quantidade de atendimentos por midia.
 
 ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/c5a89091cd5af71494053128b99b9b7ac116669e/q3a.PNG)
 
@@ -138,11 +134,9 @@ GROUP BY
        DM.MIDIA
 ```
 
-Quantidade de ligacoes por campanha!
-
+Quantidade de ligacoes por campanha.
 
 ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/c5a89091cd5af71494053128b99b9b7ac116669e/q3b.PNG)
-
 
 ```sql
 SELECT 
@@ -160,20 +154,18 @@ ORDER BY
 LIMIT 20
 ```
 
-# Outros indicadores
+## Outros indicadores
 
 4. Valor de vendas por ligação 
 
+5. Valor de vendas por estado
 
+> Achei interessante realizar um indicador onde possa mostrar quais os estados que mais realiza compra, essa informação pode ser relevante para possíveis promoções e mudança de estratégia a fim de alavancar as vendas em estados que menos consome, com base nos estados de maior sucesso de vendas.
 
-5. Valor de vendas por estado.
-
-Achei interessante realizar um indicador onde possa mostrar quais os estados que mais realiza compra, essa informação pode ser relevante para possíveis promoções e mudança de estratégia a fim de alavancar as vendas em estados que menos consome, com base nos estados de maior sucesso de vendas.
-
- ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/16d7f854a57c5e69ae7429a52842ae57804b0ec6/q5.PNG)
+![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/16d7f854a57c5e69ae7429a52842ae57804b0ec6/q5.PNG)
  
  ```sql
- SELECT  FC.UF,
+SELECT  FC.UF,
         SUM(COALESCE(DA.MONTHLY_AMOUNT, 0)) AS MONTHLY_AMOUNT
 FROM    FACT_CALL FC 
 LEFT JOIN
@@ -186,10 +178,7 @@ ORDER BY
         MONTHLY_AMOUNT ASC   
 ```
 
-
-# Criticas e Sugestões
+## Criticas e Sugestões
 
 A base poderia ter de mais dados descritivos e menos codigos, assim ficaria mais fazer presumir algo.
-
 Exemplo, o campo para diferenciar **Venda** e **Não Venda** é um código.
-
