@@ -131,7 +131,7 @@ LIMIT 20
 # Outros indicadores
 5. Valor de vendas por estado.
 
-Achei interessante realizar um indicador onde possa mostrar quais os estados que mais realiza compra, essa informação pode ser relevante para possíveis promoções e mudança de estratégia a fim de alavancar as vendas em estados que menos consome.
+Achei interessante realizar um indicador onde possa mostrar quais os estados que mais realiza compra, essa informação pode ser relevante para possíveis promoções e mudança de estratégia a fim de alavancar as vendas em estados que menos consome, com base nos estados de maior sucesso de vendas.
 
  ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/16d7f854a57c5e69ae7429a52842ae57804b0ec6/q5.PNG)
  ```
@@ -147,3 +147,9 @@ GROUP BY
 ORDER BY 
         MONTHLY_AMOUNT ASC   
 ```
+
+# Análises
+
+Na análise referente a quantidade de vendas por estado, percebemos que SP e um grande consumidor, enquanto outros estado estados possui possui uma taxa de adesao menor 
+
+
