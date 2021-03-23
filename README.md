@@ -97,6 +97,24 @@ ORDER BY
  
 ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/d0a058ebeddd5a58e5c7a1f4835c02b2d98a1580/q2.PNG)
 
+
+```
+  SELECT  DL.MIDIA,
+          SUM(COALESCE(DA.MONTHLY_AMOUNT, 0)) /
+          COUNT(DISTINCT CASE WHEN DA.RECORD_TYPE = 'Venda' THEN FC.CALL_ID END) AS MONTHLY_AMOUNT,
+          SUM(COALESCE(DA.MONTHLY_AMOUNT, 0)) / 
+          COUNT(DISTINCT FC.CALL_ID) AS CALL_TICKET
+  FROM    FACT_CALL FC
+  INNER JOIN
+          DIM_ATTENDANCE DA
+  ON      DA.TOKEN_KEY = FC.TOKEN_KEY
+  INNER JOIN
+          DIM_LINE_MKT DL
+  ON      DL.LINE_ID = FC.LINE_ID
+  GROUP BY
+          DL.MIDIA
+```
+
  
  3. Qual o número de ligações receptivas por campanha, por status final da ligação e tipo de mídia, sendo todos apresentados em uma mesma visualização?
 
