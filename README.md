@@ -94,6 +94,7 @@ ORDER BY
  
  2. Qual o ticket médio das vendas e das ligações por mídia?
  
+ Para chegar a esse resultado, realizei a soma do valor do valor mensal e contagem distinta das ligações que possui vendas!
  
 ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/d0a058ebeddd5a58e5c7a1f4835c02b2d98a1580/q2.PNG)
 
@@ -118,6 +119,8 @@ ORDER BY
  
  3. Qual o número de ligações receptivas por campanha, por status final da ligação e tipo de mídia, sendo todos apresentados em uma mesma visualização?
 
+Quantidade de atendimentos por midia!
+
 ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/c5a89091cd5af71494053128b99b9b7ac116669e/q3a.PNG)
 
 ```
@@ -131,6 +134,9 @@ WHERE  FC.MODALITY = 'Entrada'
 GROUP BY
        DM.MIDIA
 ```
+
+Quantidade de ligacoes por campanha!
+
 
 ![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/c5a89091cd5af71494053128b99b9b7ac116669e/q3b.PNG)
 
@@ -172,9 +178,6 @@ ORDER BY
         MONTHLY_AMOUNT ASC   
 ```
 
-# Análises
-
-Na análise referente a quantidade de vendas por estado, percebemos que SP e um grande consumidor, enquanto a grande maioria dos estado estados possui possui uma taxa de adesao menor, levando em consideracao que 
 
 # Criticas e Sugestões
 
