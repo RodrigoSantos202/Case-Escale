@@ -94,7 +94,9 @@ ORDER BY
  
  2. Qual o ticket médio das vendas e das ligações por mídia?
  
-![dm]( )
+ 
+![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/d0a058ebeddd5a58e5c7a1f4835c02b2d98a1580/q2.PNG)
+
  
  3. Qual o número de ligações receptivas por campanha, por status final da ligação e tipo de mídia, sendo todos apresentados em uma mesma visualização?
 
