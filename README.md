@@ -5,7 +5,7 @@ Case Escale por Rodrigo dos Santos Ramos
 
 Esse diretorio foi criado a fim de participar do processo seletivo na Escale para vaga de Data Analyst.
 
-O código utilizado no case está disponível no [Jupyter Notebook](https://github.com/RodrigoSantos202/Case-Escale/blob/main/Case-Escale-Rodrigo.ipynb).
+O código utilizado no case está disponível no [Jupyter Notebook](case-escale-rodrigo.ipynb).
 
 ## Estrututa
 
@@ -68,7 +68,7 @@ Para o processo de **ETL**, realizei tratamentos dos dados e criei tabelas fato 
 
 Após o processamento, a modelagem dimensional ficou na seguinte estrutura
 
-![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/98ee1a36e61d98a0de0e695354ae4a890b03762f/dm.PNG)
+![dm](images/dm.PNG)
 
 ## Perguntas a serem respondidas
 
@@ -76,7 +76,7 @@ Após o processamento, a modelagem dimensional ficou na seguinte estrutura
 
 > A figura abaixo ilustra o resultado obtido
  
-![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/3e6bfcb6e372bc4590ac436b8047cb7b75f262f1/q1.PNG)
+![dm](images/q1.PNG)
 
 ```sql
  SELECT  DC.DATE,
@@ -97,7 +97,7 @@ ORDER BY
  
 Para chegar a esse resultado, realizei a soma do valor mensal e contagem distinta das ligações que possuem vendas.
  
-![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/d0a058ebeddd5a58e5c7a1f4835c02b2d98a1580/q2.PNG)
+![dm](images/q2.PNG)
 
 ```sql
   SELECT  DL.MIDIA,
@@ -120,7 +120,7 @@ Para chegar a esse resultado, realizei a soma do valor mensal e contagem distint
 
 Quantidade de atendimentos por midia.
 
-![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/c5a89091cd5af71494053128b99b9b7ac116669e/q3a.PNG)
+![dm](images/q3a.PNG)
 
 ```sql
 SELECT DM.MIDIA
@@ -136,7 +136,7 @@ GROUP BY
 
 Quantidade de ligacoes por campanha.
 
-![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/c5a89091cd5af71494053128b99b9b7ac116669e/q3b.PNG)
+![dm](images/q3b.PNG)
 
 ```sql
 SELECT 
@@ -157,12 +157,15 @@ LIMIT 20
 ## Outros indicadores
 
 4. Valor de vendas por ligação 
+> Valor de vendas por modalidade de ligação. 
+
+![dm](images/q4.PNG)
 
 5. Valor de vendas por estado
 
 > Achei interessante realizar um indicador onde possa mostrar quais os estados que mais realiza compra, essa informação pode ser relevante para possíveis promoções e mudança de estratégia a fim de alavancar as vendas em estados que menos consome, com base nos estados de maior sucesso de vendas.
 
-![dm](https://github.com/RodrigoSantos202/Case-Escale/blob/16d7f854a57c5e69ae7429a52842ae57804b0ec6/q5.PNG)
+![dm](images/q5.PNG)
  
  ```sql
 SELECT  FC.UF,
