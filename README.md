@@ -4,6 +4,9 @@ Case-Escale Rodrigo dos Santos Ramos
 # Resumo
 
 Esse diretorio foi criado a fim de participar do processo seletivo na Escale para vaga de Data Analyst. 
+
+Link de acesso ao Case link: https://github.com/RodrigoSantos202/Case-Escale/blob/b945316e39bbb79e0d57cce32f16a3dc514f6445/Case-Escale-Rodrigo.ipynb
+
 # Estrututa
 
 1. Conexao com banco de dados 
