@@ -162,6 +162,7 @@ LIMIT 20
 
 # Outros indicadores
 
+4. Valor de vendas por ligação 
 
 
 
