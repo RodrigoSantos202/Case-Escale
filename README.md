@@ -157,10 +157,11 @@ ORDER BY
 LIMIT 20
 ```
 
-
-
-
 # Outros indicadores
+
+
+
+
 5. Valor de vendas por estado.
 
 Achei interessante realizar um indicador onde possa mostrar quais os estados que mais realiza compra, essa informação pode ser relevante para possíveis promoções e mudança de estratégia a fim de alavancar as vendas em estados que menos consome, com base nos estados de maior sucesso de vendas.
